@@ -1,10 +1,10 @@
-package fact.it.apteventservice;
+package fact.it.eventservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AptEventServiceApplicationTests {
+class EventServiceApplicationTests {
 
     @Test
     void contextLoads() {

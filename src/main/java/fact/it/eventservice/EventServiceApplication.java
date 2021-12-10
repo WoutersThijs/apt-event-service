@@ -1,13 +1,13 @@
-package fact.it.apteventservice;
+package fact.it.eventservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AptEventServiceApplication {
+public class EventServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AptEventServiceApplication.class, args);
+        SpringApplication.run(EventServiceApplication.class, args);
     }
 
 }

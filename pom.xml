@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>fact.it</groupId>
-    <artifactId>apt-event-service</artifactId>
+    <artifactId>event-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apt-event-service</name>
+    <name>event-service</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
