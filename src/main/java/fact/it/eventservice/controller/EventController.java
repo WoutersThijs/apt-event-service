@@ -2,10 +2,10 @@ package fact.it.eventservice.controller;
 
 import fact.it.eventservice.model.Event;
 import fact.it.eventservice.repository.EventRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -31,6 +31,35 @@ public class EventController {
         return eventRepository.findEventsByOrganiser(organiser);
     }
 
+    @PostMapping("/events")
+    public Event addEvent(@RequestBody Event event){
+        eventRepository.save(event);
+        return event;
+    }
+
+    @PutMapping("/events")
+    public Event updateEvent(@RequestBody Event updatedEvent){
+        Event retrievedEvent = eventRepository.findEventByEventName(updatedEvent.getEventName());
+
+        retrievedEvent.setEventName(updatedEvent.getEventName());
+        retrievedEvent.setOrganiser(updatedEvent.getOrganiser());
+
+        eventRepository.save(retrievedEvent);
+
+        return retrievedEvent;
+    }
+
+    @DeleteMapping("/events/event/{eventName}")
+    public ResponseEntity deleteEvent(@PathVariable String eventName){
+        Event event = eventRepository.findEventByEventName(eventName);
+        if(event!=null){
+            eventRepository.delete(event);
+            return ResponseEntity.ok().build();
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostConstruct
     public void fillDB(){
         if(eventRepository.count()==0){
@@ -38,7 +67,7 @@ public class EventController {
             eventRepository.save(new Event("Bumble 2022", "Gianni De Herdt"));
 
         }
-        System.out.println("The organiser of HannesPop 2021 is: " + eventRepository.findEventByEventName("HannesPop 2021").getOrganiser());
+        System.out.println("The organiser of Bumble 2022 is: " + eventRepository.findEventByEventName("Bumble 2022").getOrganiser());
         System.out.println(eventRepository.findAll());
     }
 }
