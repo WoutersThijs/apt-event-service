@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isA;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -31,6 +32,20 @@ public class EventControllerUnitTests {
     private EventRepository eventRepository;
 
     private ObjectMapper mapper = new ObjectMapper();
+
+
+    @Test
+    public void whenGetAllEvents_thenReturnJsonEvent() throws Exception{
+        List<Event> allEvents = eventRepository.findAll();
+
+        given(eventRepository.findAll()).willReturn(allEvents);
+
+        mockMvc.perform(get("/events"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)));
+    }
+
 
     @Test
     public void givenEvent_whenGetEventByEventName_thenReturnJsonEvent() throws Exception {
