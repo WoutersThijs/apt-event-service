@@ -59,15 +59,4 @@ public class EventController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @PostConstruct
-    public void fillDB(){
-        if(eventRepository.count()==0){
-            eventRepository.save(new Event("SuperFest 2021", "Thijs Wouters"));
-            eventRepository.save(new Event("Bumble 2022", "Gianni De Herdt"));
-
-        }
-        System.out.println("The organiser of Bumble 2022 is: " + eventRepository.findEventByEventName("Bumble 2022").getOrganiser());
-        System.out.println(eventRepository.findAll());
-    }
 }
