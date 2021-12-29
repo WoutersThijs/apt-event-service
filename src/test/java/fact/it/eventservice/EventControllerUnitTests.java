@@ -49,7 +49,7 @@ public class EventControllerUnitTests {
 
     @Test
     public void givenEvent_whenGetEventByEventName_thenReturnJsonEvent() throws Exception {
-        Event event1 = new Event("Event1","Organiser1");
+        Event event1 = new Event("Event1","Organizer1");
 
         given(eventRepository.findEventByEventName("Event1")).willReturn(event1);
 
@@ -57,50 +57,50 @@ public class EventControllerUnitTests {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.eventName",is("Event1")))
-                .andExpect(jsonPath("$.organiser",is("Organiser1")));
+                .andExpect(jsonPath("$.organizer",is("Organizer1")));
     }
 
     @Test
-    public void givenEvent_whenGetEventsByOrganiser_thenReturnJsonEvents() throws Exception {
-        Event event1Organiser1 = new Event("Event1","Organiser1");
-        Event event2Organiser1 = new Event("Event2","Organiser1");
+    public void givenEvent_whenGetEventsByOrganizer_thenReturnJsonEvents() throws Exception {
+        Event event1Organizer1 = new Event("Event1","Organizer1");
+        Event event2Organizer1 = new Event("Event2","Organizer1");
 
         List<Event> eventList = new ArrayList<>();
-        eventList.add(event1Organiser1);
-        eventList.add(event2Organiser1);
+        eventList.add(event1Organizer1);
+        eventList.add(event2Organizer1);
 
-        given(eventRepository.findEventsByOrganiser("Organiser1")).willReturn(eventList);
+        given(eventRepository.findEventsByOrganizer("Organizer1")).willReturn(eventList);
 
-        mockMvc.perform(get("/events/organiser/{organiser}","Organiser1"))
+        mockMvc.perform(get("/events/organizer/{organizer}","Organizer1"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].eventName",is("Event1")))
-                .andExpect(jsonPath("$[0].organiser",is("Organiser1")))
+                .andExpect(jsonPath("$[0].organizer",is("Organizer1")))
                 .andExpect(jsonPath("$[1].eventName",is("Event2")))
-                .andExpect(jsonPath("$[1].organiser",is("Organiser1")));
+                .andExpect(jsonPath("$[1].organizer",is("Organizer1")));
     }
 
     @Test
     public void whenPostEvent_thenReturnJsonEvent() throws Exception{
-        Event event3Organiser2 = new Event("Event3","Organiser2");
+        Event event3Organizer2 = new Event("Event3","Organizer2");
 
         mockMvc.perform(post("/events")
-                .content(mapper.writeValueAsString(event3Organiser2))
+                .content(mapper.writeValueAsString(event3Organizer2))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.eventName",is("Event3")))
-                .andExpect(jsonPath("$.organiser",is("Organiser2")));
+                .andExpect(jsonPath("$.organizer",is("Organizer2")));
     }
 
     @Test
     public void givenEvent_whenPutEvent_thenReturnJsonEvent() throws Exception{
-        Event event1Organiser1 = new Event("Event1","Organiser1");
+        Event event1Organizer1 = new Event("Event1","Organizer1");
 
-        given(eventRepository.findEventByEventName("Event1")).willReturn(event1Organiser1);
+        given(eventRepository.findEventByEventName("Event1")).willReturn(event1Organizer1);
 
-        Event updatedEvent = new Event("Event1","Organiser2");
+        Event updatedEvent = new Event("Event1","Organizer2");
 
         mockMvc.perform(put("/events")
                 .content(mapper.writeValueAsString(updatedEvent))
@@ -108,12 +108,12 @@ public class EventControllerUnitTests {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.eventName",is("Event1")))
-                .andExpect(jsonPath("$.organiser",is("Organiser2")));
+                .andExpect(jsonPath("$.organizer",is("Organizer2")));
     }
 
     @Test
     public void givenEvent_whenDeleteEvent_thenStatusOk() throws Exception{
-        Event eventToBeDeleted = new Event("EventDelete","OrganiserDelete");
+        Event eventToBeDeleted = new Event("EventDelete","OrganizerDelete");
 
         given(eventRepository.findEventByEventName("EventDelete")).willReturn(eventToBeDeleted);
 

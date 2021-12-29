@@ -26,9 +26,9 @@ public class EventController {
         return eventRepository.findEventByEventName(eventName);
     }
 
-    @GetMapping("events/organiser/{organiser}")
-    public List<Event> getEventsByOrganiser(@PathVariable String organiser){
-        return eventRepository.findEventsByOrganiser(organiser);
+    @GetMapping("events/organizer/{organizer}")
+    public List<Event> getEventsByOrganizer(@PathVariable String organizer){
+        return eventRepository.findEventsByOrganizer(organizer);
     }
 
     @PostMapping("/events")
@@ -42,7 +42,7 @@ public class EventController {
         Event retrievedEvent = eventRepository.findEventByEventName(updatedEvent.getEventName());
 
         retrievedEvent.setEventName(updatedEvent.getEventName());
-        retrievedEvent.setOrganiser(updatedEvent.getOrganiser());
+        retrievedEvent.setOrganizer(updatedEvent.getOrganizer());
 
         eventRepository.save(retrievedEvent);
 

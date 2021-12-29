@@ -7,7 +7,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String organiser;
+    private String organizer;
 
     @Column(unique=true)
     private String eventName;
@@ -16,9 +16,9 @@ public class Event {
     public Event() {
     }
 
-    public Event(String eventName, String organiser) {
+    public Event(String eventName, String organizer) {
         setEventName(eventName);
-        setOrganiser(organiser);
+        setOrganizer(organizer);
     }
 
     public int getId() {
@@ -29,12 +29,12 @@ public class Event {
         this.id = id;
     }
 
-    public String getOrganiser() {
-        return organiser;
+    public String getOrganizer() {
+        return organizer;
     }
 
-    public void setOrganiser(String organiser) {
-        this.organiser = organiser;
+    public void setOrganizer(String organizer) {
+        this.organizer = organizer;
     }
 
     public String getEventName() {
