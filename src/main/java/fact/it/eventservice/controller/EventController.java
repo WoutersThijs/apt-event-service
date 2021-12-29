@@ -26,7 +26,7 @@ public class EventController {
         return eventRepository.findEventByEventName(eventName);
     }
 
-    @GetMapping("events/organizer/{organizer}")
+    @GetMapping("/events/organizer/{organizer}")
     public List<Event> getEventsByOrganizer(@PathVariable String organizer){
         return eventRepository.findEventsByOrganizer(organizer);
     }
