@@ -16,6 +16,16 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    @PostConstruct
+    public void fillDB(){
+        if(eventRepository.count()==0){
+            eventRepository.save(new Event("Event1", "Organizer1"));
+            eventRepository.save(new Event("Event2", "Organizer2"));
+            eventRepository.save(new Event("EventTBD", "OrganizerTBD"));
+        }
+    }
+
+
     @GetMapping("/events")
     public List<Event> findAll(){
         return eventRepository.findAll();
@@ -59,4 +69,6 @@ public class EventController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 }
