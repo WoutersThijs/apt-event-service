@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: postgres-latest
+    runs-on: ubuntu-latest
     name: Java 16 build, test, deliver container
     steps:
       - name: Check out repository
