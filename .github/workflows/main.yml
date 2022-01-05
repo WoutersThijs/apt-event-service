@@ -27,4 +27,4 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USER }} .
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }
+        run: docker push ${{ secrets.DOCKER_USER }}
