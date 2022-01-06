@@ -59,7 +59,7 @@ spec:
     spec:                     # Spec for the containers that will be run in the Pods
       containers:
         - name: event-service-server
-          image: r0790225/event-service
+          image: woutersthijs/apt-event-service
           imagePullPolicy: Always
           ports:
             - name: http
