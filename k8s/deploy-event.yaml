@@ -69,10 +69,6 @@ spec:
               cpu: 0.2
               memory: "200Mi"
           env:                    # Environment variables supplied to the Pod
-            - name: POSTGRES_USER
-              value: "postgres"
-            - name: POSTGRES_PASSWORD
-              value: "postgres"
             - name: POSTGRES_HOST
               value: "event-service-postgres"
 ---
