@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <sonar.organization>apt</sonar.organization>
+        <sonar.organization>woutersthijs</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
