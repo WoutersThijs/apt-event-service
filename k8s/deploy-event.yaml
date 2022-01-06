@@ -67,10 +67,11 @@ spec:
               memory: "200Mi"
           env:                    # Environment variables supplied to the Pod
             - name: POSTGRES_HOST
-              value: "event-service-postgres"
+              value: "postgres"
             - name: POSTGRES_PORT
               value: "5432"
             - name: POSTGRES_PASSWORD
+              value: "postgres"
 ---
 apiVersion: v1                   # API version
 kind: Service                    # Type of the kubernetes resource
