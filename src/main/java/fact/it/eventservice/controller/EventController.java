@@ -21,6 +21,7 @@ public class EventController {
         if(eventRepository.count()==0){
             eventRepository.save(new Event("Event1", "Organizer1"));
             eventRepository.save(new Event("Event2", "Organizer2"));
+            eventRepository.save(new Event("Event3", "Organizer3"));
             eventRepository.save(new Event("EventTBD", "OrganizerTBD"));
         }
     }
