@@ -70,6 +70,7 @@ spec:
               value: "event-service-postgres"
             - name: POSTGRES_PORT
               value: "5432"
+            - name: POSTGRES_PASSWORD
 ---
 apiVersion: v1                   # API version
 kind: Service                    # Type of the kubernetes resource
