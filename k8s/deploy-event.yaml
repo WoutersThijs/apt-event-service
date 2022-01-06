@@ -73,8 +73,8 @@ spec:
             #  value: ""
             #- name: POSTGRES_PASSWORD
             #  value: ""
-            #- name: POSTGRES_HOST
-            #  value: ""
+            - name: POSTGRES_HOST
+              value: "postgres"
 ---
 apiVersion: v1                      # API version
 kind: Service                       # Type of the kubernetes resource
